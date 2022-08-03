@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * printf_char - prints a char.
  * @val: arguments.
