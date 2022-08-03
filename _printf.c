@@ -1,84 +1,46 @@
 #include "main.h"
-
+#include <stdio.h>
 /**
- * get_op - select function for conversion char
- * @c: char to check
- * Return: pointer to function
+ * _printf - is a function that selects the correct function to print.
+ * @format: identifier to look for.
+ * Return: the length of the string.
  */
-
-int (*get_op(const char c))(va_list)
-{
-	int i = 0;
-
-	flags_p fp[] = {
-		{"c", print_char},
-		{"s", print_str},
-		{"i", print_nbr},
-		{"d", print_nbr},
-		{"b", print_binary},
-		{"o", print_octal},
-		{"x", print_hexa_lower},
-		{"X", print_hexa_upper},
-		{"u", print_unsigned},
-		{"S", print_str_unprintable},
-		{"r", print_str_reverse},
-		{"p", print_ptr},
-		{"R", print_rot13},
-		{"%", print_percent}
-	};
-	while (i < 14)
-	{
-		if (c == fp[i].c[0])
-		{
-			return (fp[i].f);
-		}
-		i++;
-	}
-	return (NULL);
-}
-
-/**
- * _printf - Reproduce behavior of printf function
- * @format: format string
- * Return: value of printed chars
- */
-
 int _printf(const char *format, ...)
 {
-	va_list ap;
-	int sum = 0, i = 0;
-	int (*func)();
+	convert_match m[] = {
+		{"%s", printf_string}, {"%c", printf_char},
+		{"%%", _printf_37},
+		{"%i", printf_int}, {"%d", printf_dec}, {"%r", printf_srev},
+		{"%R", _printf_rot13}, {"%b", printf_bin}, {"%u", printf_unsigned},
+		{"%o", printf_oct}, {"%x", printf_hex}, {"%X", printf_HEX},
+		{"%S", printf_exclusive_string}, {"%p", printf_pointer}
+	};
 
-	if (!format || (format[0] == '%' && format[1] == '\0'))
+	va_list args;
+	int i = 0, j, len = 0;
+
+	va_start(args, format);
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
-	va_start(ap, format);
 
-	while (format[i])
+Here:
+	while (format[i] != '\0')
 	{
-		if (format[i] == '%')
+		j = 13;
+		while (j >= 0)
 		{
-			if (format[i + 1] != '\0')
-				func = get_op(format[i + 1]);
-			if (func == NULL)
+			if (m[j].id[0] == format[i] && m[j].id[1] == format[i + 1])
 			{
-				_putchar(format[i]);
-				sum++;
-				i++;
+				len += m[j].f(args);
+				i = i + 2;
+				goto Here;
 			}
-			else
-			{
-				sum += func(ap);
-				i += 2;
-				continue;
-			}
+			j--;
 		}
-		else
-		{
-			_putchar(format[i]);
-			sum++;
-			i++;
-		}
+		_putchar(format[i]);
+		len++;
+		i++;
 	}
-	va_end(ap);
-	return (sum);
+	va_end(args);
+	return (len);
 }
