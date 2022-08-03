@@ -1,6 +1,5 @@
 #ifndef MAIN_H
 #define MAIN_H
-#include <stdarg.h>
 int _printf(const char *format, ...);
 int print_char(va_list ap);
 int print_str(va_list ap);
@@ -49,6 +48,7 @@ int printf_char(va_list val);
 int printf_string(va_list val);
 int _putchar(char c);
 int _printf(const char *format, ...);
+nt print_nbr(va_list ap);
 
 /**
  * struct flags_printf - struct conversion to function

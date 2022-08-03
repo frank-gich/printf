@@ -1,8 +1,4 @@
-#include <stdarg.h>
-#include "main.h"
-#include <limits.h>
-#include <stdlib.h>
-
+#include "main.h" 
 /**
  * print_unsigned - manage unsigned int
  * @ap: arg list
