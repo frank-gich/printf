@@ -1,4 +1,5 @@
-#include "main.h"
+#include "holberton.h"
+
 /**
  * printf_HEX - prints an hexadecimal number.
  * @val: arguments.
