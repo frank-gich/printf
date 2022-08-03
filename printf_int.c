@@ -1,5 +1,7 @@
-#include "holberton.h"
-/**
+#include <limits.h>
+#include <stdio.h>
+#include "main.h"
+
  * printf_int - prints integer
  * @args: argument to print
  * Return: number of characters printed

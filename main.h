@@ -1,5 +1,8 @@
-#ifndef HOLBERTON_H
-#define HOLBERTON_H
+#ifndef MAIN_H
+#define MAIN_H
+
+#include <limits.h>
+#include <stdio.h>
 
 /**
  * struct format - match the conversion specifiers for printf

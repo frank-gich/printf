@@ -1,4 +1,7 @@
-#include "holberton.h"
+#include <limits.h>
+#include <stdio.h>
+#include "main.h"
+
 /**
  * printf_string - print a string.
  * @val: argumen t.

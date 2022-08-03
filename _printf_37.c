@@ -1,4 +1,6 @@
-#include "holberton.h"
+#include <limits.h>
+#include <stdio.h>
+#include "main.h"
 /**
  * _printf_37 - prints the char 37
  * Return: 1.

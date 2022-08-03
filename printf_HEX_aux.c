@@ -1,4 +1,6 @@
-#include "holberton.h"
+#include <limits.h>
+#include <stdio.h>
+#include "main.h"
 
 /**
  * printf_HEX_aux - prints an hexadecimal number.
