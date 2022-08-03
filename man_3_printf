@@ -1,3 +1,4 @@
+.TH _PRINTF "Custom printf Manual"
 .SH NAME
 _printf - formatted output conversion with number of bytes printed as return
 .SH SYNOPSIS
